@@ -67,16 +67,31 @@ class DeFiCreditScorer:
         features_df['credit_score'] = weighted_scores
         return features_df
     
+    def get_score_ranges(self, scores):
+        bins = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+        labels = ['0-99', '100-199', '200-299', '300-399', '400-499', 
+                 '500-599', '600-699', '700-799', '800-899', '900-1000']
+        score_df = pd.DataFrame({'wallet': list(scores.keys()), 'score': list(scores.values())})
+        score_df['range'] = pd.cut(score_df['score'], bins=bins, labels=labels, right=False)
+        return score_df['range'].value_counts().sort_index()
+    
     def score_wallets(self, json_data):
         data = json.loads(json_data)
         features_df = self.preprocess_data(data)
         features_df = self.compute_anomaly_scores(features_df)
         features_df = self.calculate_credit_scores(features_df)
-        return dict(zip(features_df['wallet'], features_df['credit_score']))
+        scores = dict(zip(features_df['wallet'], features_df['credit_score']))
+        return scores
 
 if __name__ == "__main__":
     with open('user-wallet-transactions.json', 'r') as f:
         json_data = f.read()
     scorer = DeFiCreditScorer()
     scores = scorer.score_wallets(json_data)
+    
+    range_counts = scorer.get_score_ranges(scores)
+    print("\nWallet Count by Score Range:")
+    print(range_counts.to_string())
+    
+    print("\nIndividual Wallet Scores:")
     print(json.dumps(scores, indent=2))
