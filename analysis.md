@@ -22,7 +22,7 @@ pie title Credit Score Distribution
 xychart-beta
     title "Wallet Count by Score Range"
     x-axis "Score Range" [0-99, 100-199, 200-299, 300-399, 400-499, 500-599, 600-699, 700-799, 800-899, 900-1000]
-    y-axis "Number of Wallets" 0-->2500
+    y-axis "Number of Wallets" 0-->2600
     bar [0, 0, 3, 30, 704, 2498, 240, 15, 2, 5]
 ```
 ```mermaid
