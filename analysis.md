@@ -4,7 +4,6 @@
 
 ```mermaid
 pie title Credit Score Distribution
-    "Range with count of Credit Score"
     "900-1000 (Elite)": 5
     "800-899 (Excellent)": 2
     "700-799 (Very Good)": 15
