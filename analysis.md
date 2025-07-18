@@ -26,9 +26,8 @@ xychart-beta
     bar [0, 0, 3, 30, 704, 2498, 240, 15, 2, 5]
 ```
 ```mermaid
-pie title Risk Category Breakdown
-    showData
-    "Low Risk (600-1000)": 262
-    "Medium Risk (400-599)": 3202
-    "High Risk (0-399)": 33
-```
+xychart-beta
+    title "Cumulative % of Wallets by Score (3500 Wallets Total)"
+    x-axis "Credit Score" [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+    y-axis "% of Wallets" 0-->100
+    line [0, 0, 0.09, 0.94, 21.1, 92.5, 99.4, 99.9, 100, 100, 100]
