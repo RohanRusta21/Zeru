@@ -25,3 +25,10 @@ xychart-beta
     y-axis "Number of Wallets" 0-->2500
     bar [0, 0, 3, 30, 704, 2498, 240, 15, 2, 5]
 ```
+```mermaid
+pie title Risk Category Breakdown
+    showData
+    "Low Risk (600-1000)": 262
+    "Medium Risk (400-599)": 3202
+    "High Risk (0-399)": 33
+```
