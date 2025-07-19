@@ -7,10 +7,6 @@ This system implements a credit scoring mechanism for DeFi wallets based on tran
 - [Methodology](#methodology)
 - [System Architecture](#system-architecture)
 - [Processing Flow](#processing-flow)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Output](#output)
 
 ## Methodology
 
