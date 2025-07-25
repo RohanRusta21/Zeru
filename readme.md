@@ -13,7 +13,7 @@ A data-driven framework to assess wallet risk exposure in Compound Finance's len
 
 
 ## Features
-✔ **Comprehensive Risk Scoring** (0-1000 scale)  
+[X] **Comprehensive Risk Scoring** (0-1000 scale)  
 ✔ **Multi-Source Data Collection** (Etherscan, Subgraph, Web3)  
 ✔ **Weighted Risk Indicators** (Liquidations, Borrowing, Collateral, etc.)  
 ✔ **Scalable Architecture** (Batch processing, caching)  
