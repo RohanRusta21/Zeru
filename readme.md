@@ -10,10 +10,7 @@ A data-driven framework to assess wallet risk exposure in Compound Finance's len
 - [Features](#features)
 - [Methodology](#methodology)
 - [Risk Indicators](#risk-indicators)
-- [Implementation](#implementation)
-- [Usage](#usage)
-- [Future Roadmap](#future-roadmap)
-- [Contributing](#contributing)
+
 
 ## Features
 ✔ **Comprehensive Risk Scoring** (0-1000 scale)  
