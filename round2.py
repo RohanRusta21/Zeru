@@ -5,7 +5,7 @@ from web3 import Web3
 from datetime import datetime
 
 # Initialize Web3 (replace with your own provider)
-w3 = Web3(Web3.HTTPProvider('https://mainnet.infura.io/v3/9f763041364a4897a7e3723ca4b5a937'))
+w3 = Web3(Web3.HTTPProvider('https://mainnet.infura.io/v3/infura_project_id')) # Replace with your Infura project ID
 
 # Compound V2/V3 contract addresses
 COMPOUND_V2_COMPTROLLER = "0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B"
@@ -17,7 +17,7 @@ wallets = wallet_df['wallet_id'].tolist()
 
 def get_compound_transactions(wallet_address):
     """Fetch Compound transactions for a wallet using Etherscan API"""
-    api_key = "P8M42CPNIBCRX5E7Y4CRRJ615UJZJGM4JJ"
+    api_key = "your_etherscan_api_key"  # Replace with your Etherscan API key
     url = f"https://api.etherscan.io/api?module=account&action=txlist&address={wallet_address}&startblock=0&endblock=99999999&sort=asc&apikey={api_key}"
     
     try:

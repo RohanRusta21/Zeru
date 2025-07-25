@@ -1,58 +1,53 @@
-# DeFi Credit Scoring System
+# Wallet Risk Scoring Framework for Compound Protocol
 
-## Overview
-This system implements a credit scoring mechanism for DeFi wallets based on transaction history analysis using a hybrid anomaly detection and weighted feature scoring approach.
+![DeFi Risk Analysis](https://img.shields.io/badge/DeFi-Risk_Analysis-blue)
+![Compound Protocol](https://img.shields.io/badge/Protocol-Compound_V2%2FV3-green)
+![Scoring Scale](https://img.shields.io/badge/Scoring-0_to_1000-orange)
+
+A data-driven framework to assess wallet risk exposure in Compound Finance's lending/borrowing protocols.
 
 ## Table of Contents
+- [Features](#features)
 - [Methodology](#methodology)
-- [System Architecture](#system-architecture)
-- [Processing Flow](#processing-flow)
+- [Risk Indicators](#risk-indicators)
+- [Implementation](#implementation)
+- [Usage](#usage)
+- [Future Roadmap](#future-roadmap)
+- [Contributing](#contributing)
+
+## Features
+✔ **Comprehensive Risk Scoring** (0-1000 scale)  
+✔ **Multi-Source Data Collection** (Etherscan, Subgraph, Web3)  
+✔ **Weighted Risk Indicators** (Liquidations, Borrowing, Collateral, etc.)  
+✔ **Scalable Architecture** (Batch processing, caching)  
+✔ **Validation Framework** (Historical backtesting)  
 
 ## Methodology
+### Data Collection
+- **Primary Sources:**
+  - Ethereum blockchain via Etherscan API/Web3
+  - Compound Subgraph (The Graph protocol)
+- **Secondary Verification:**
+  - DeFi Llama/Risk APIs
+  - On-chain analytics tools
 
-### Hybrid Approach
-Combines two techniques:
-1. **Isolation Forest Anomaly Detection**
-   - Identifies unusual transaction patterns
-   - Generates anomaly scores for each wallet
+### Scoring Formula
+Risk Score =
+(Liquidation Score × 0.30) +
+(Borrowing Score × 0.20) +
+(Collateral Score × 0.15) +
+(Health Factor Score × 0.15) +
+(Transaction Velocity Score × 0.10) +
+(Cross-Protocol Score × 0.10)
 
-2. **Weighted Feature Scoring**
-   - Combines 7 key transaction features
-   - Uses domain-informed weights
-   - Normalizes to 0-1000 credit score range
+## Risk Indicators
+| Indicator               | Weight | Description                          |
+|-------------------------|--------|--------------------------------------|
+| Liquidations            | 30%    | Count of `LiquidateBorrow` events    |
+| Borrow Frequency        | 20%    | Leverage risk assessment             |
+| Collateral Diversity    | 15%    | Herfindahl index of assets           |
+| Health Factor Trends    | 15%    | Proximity to liquidation             |
+| Transaction Velocity    | 10%    | Activity pattern analysis            |
+| Cross-Protocol Exposure | 10%    | External DeFi risk                   |
 
-### Why This Approach?
-- Handles complex DeFi transaction patterns
-- Balances statistical robustness with interpretability
-- Adaptable to different DeFi protocols
 
-## System Architecture
-
-### Components
-| Component | Purpose | Key Technologies |
-|-----------|---------|------------------|
-| Data Preprocessor | Parses raw JSON, extracts features | Pandas, Datetime |
-| Anomaly Detector | Identifies suspicious wallets | Scikit-Learn IsolationForest |
-| Credit Scorer | Calculates final scores | StandardScaler, Sigmoid |
-
-### Feature Weights
-| Feature | Weight | Impact |
-|---------|--------|--------|
-| tx_count | 0.15 | Positive |
-| unique_assets | 0.15 | Positive |
-| avg_amount_usd | 0.1 | Positive |
-| deposit_ratio | 0.2 | Positive |
-| liquidation_ratio | -0.3 | Negative |
-| time_variability | -0.1 | Negative |
-| anomaly_score | -0.3 | Negative |
-
-## Processing Flow
-
-```mermaid
-graph LR
-    A[JSON Input] --> B[Preprocessing]
-    B --> C[Feature Extraction]
-    C --> D[Anomaly Scoring]
-    D --> E[Normalization]
-    E --> F[Weighted Combination]
-    F --> G[Credit Scores]
